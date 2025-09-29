@@ -9,61 +9,77 @@ const projects = [
     title: "RootsAI",
     description: "At DiamondHacks 2025, my team and I created RootsAI, winning the Best Use of Letta award. This application helps families navigate government assistance programs using Whisper and Google Gemini.",
     image: "/images/rootsai.png",
-    technologies: ["React", "TypeScript", "MongoDB", "Express", "FastAPI", "Whisper", "Gemini API", "Auth0", "Docker"]
+    technologies: ["React", "TypeScript", "FastAPI", "Whisper", "Gemini API", "Auth0", "Docker"],
+	link: "https://www.hackroots.tech/"
   },
   {
     title: "Domain Films",
-    description: "test",
-    image: "/images/",
-    technologies: ["test"]
+    description: "For my Software Engineering course, I codeveloped with 4 students a full-stack movie streaming app. The project features both web and mobile interfaces, allowing users to browse, search, and stream movies and shows seamlessly across devices.",
+    image: "/images/domainfilms.png",
+    technologies: ["MongoDB", "React Native", "Express.js", "Node.js", "Javascript", "Expo", "AWS", "Jellyfin"],
+	link: "https://github.com/ethan-ngo/CS4800-Netflix"
   },
   {
     title: "ZeroG Inbox",
     description: "",
-    image: "/images/",
-    technologies: []
+    image: "/images/zerog.png",
+    technologies: ["Next.js", "TypeScript", "Python", "Flask", "Clerk", "Gemini API", "Gmail API", "ShadCN", "Tailwind CSS"],
+	link: "https://youtu.be/j9X4relETyw?si=08JLia7NaP0pBCPM"
   },
   {
     title: "Live Aid",
     description: "",
-    image: "/images/",
-    technologies: []
+    image: "/images/liveaid.png",
+    technologies: ["Convex", "OpenAI API", "Next.js", "TypeScript", "scikit-learn", "Python", "newsdata.io"],
+	link: "https://dyzlq9-3000.csb.app/"
   },
   {
     title: "Carbon Closet",
     description: "",
-    image: "/images/",
-    technologies: []
+    image: "/images/carboncloset.png",
+    technologies: ["Firebase", "Next.js", "Python", "JavaScript", "Flask", "ShadCN"],
+	link: "https://www.youtube.com/watch?v=Rzp-D-KonUo"
   },
   {
     title: "Recycle or Not",
     description: "",
-    image: "/images/",
-    technologies: []
+    image: "/images/recycle.jpg",
+    technologies: ["OpenCV", "Python", "Flask", "JavaScript", "React"],
+	link: "https://www.youtube.com/watch?v=oJyRTPOPXxo"
+  },
+   {
+    title: "3D Obstacle Avoidance",
+    description: "",
+    image: "/images/lidar.jpg",
+    technologies: ["ROS", "Python","C++", "Linux", "Bash", "PointCloud2", "JetsonNano", "LiDAR"],
   },
   {
     title: "Neon Navigator",
     description: "",
-    image: "/images/",
-    technologies: []
+    image: "/images/neon.png",
+    technologies: ["C#", "Unity"],
+	link:"https://www.youtube.com/watch?v=AJF5Z4aIbgA"
   },
   {
     title: "Icebreak",
     description: "",
-    image: "/images/",
-    technologies: []
+    image: "/images/icebreak.png",
+    technologies: ["Expo", "React Native", "JavaScript", "Express.js", "PostgreSQL", "Prisma", "Redis"],
+	link: "https://github.com/cppsea/icebreak"
   },
   {
     title: "Personal Scheduling System",
     description: "",
-    image: "/images/",
-    technologies: []
+    image: "/images/pss.png",
+    technologies: ["Next.js", "JavaScript", "Python", "Flask"],
+	link: "https://www.youtube.com/watch?v=4dcPYF_yOcw"
   },
   {
     title: "Real-Time Chat",
     description: "",
-    image: "/images/",
-    technologies: []
+    image: "/images/chat.jpg",
+    technologies: ["C", "Linux"],
+	link: "https://github.com/ethan-ngo/cs2600"
   },
 ];
 
