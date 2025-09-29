@@ -1,6 +1,6 @@
 "use client";
 
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaFileAlt } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import ProjectCard from '@/components/ProjectCard';
 
@@ -157,9 +157,9 @@ export default function Home() {
 
 	return (
 		<div className="min-h-screen bg-[#13141f] text-white pl-20">
-			<main className="container mx-auto px-4 py-12">
+			<main className="container mx-auto px-4">
 				{/* Introduction */}
-				<section id="home" className="py-32 min-h-screen flex flex-col">
+				<section id="home" className="min-h-screen flex flex-col justify-center">
 					<div className="grid grid-cols-1 md:grid-cols-12 items-center gap-8 w-full max-w-5xl mx-auto">
 						<div className="flex flex-col items-start justify-center text-left mx-auto md:col-span-7 w-full">
 							<h1 className="text-5xl font-bold mb-4">
@@ -189,6 +189,15 @@ export default function Home() {
 								>
 									<FaGithub size={32} />
 								</a>
+								<a
+									href="/resume.pdf"
+									target="_blank"
+									rel="noreferrer"
+									className="text-[#00b4d8] hover:text-white transition-colors"
+									title="View Resume"
+								>
+									<FaFileAlt size={32} />
+								</a>
 							</div>
 						</div>
 						<div className="flex justify-center md:col-span-5 w-full">
@@ -200,10 +209,10 @@ export default function Home() {
 				</section>
 
 				{/* Projects */}
-				<section id="projects" className="py-40 min-h-screen flex items-center">
-					<div className="w-full">
+				<section id="projects" className="py-20 min-h-screen flex items-center">
+					<div className="w-full px-4">
 						<h2 className="text-4xl font-bold mb-8">Projects</h2>
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 							{projects.map((p) => (
 								<ProjectCard key={p.title} {...p} />
 							))}
@@ -212,8 +221,8 @@ export default function Home() {
 				</section>
 
 				{/* Experience */}
-				<section id="experience" className="py-40 min-h-screen flex items-center">
-					<div className="w-full">
+				<section id="experience" className="py-20 min-h-screen flex items-center">
+					<div className="w-full px-4">
 						<h2 className="text-4xl font-bold mb-8">Experience</h2>
 						<div className="overflow-x-auto">
 							<table className="min-w-full bg-[#232532] rounded-xl overflow-hidden shadow-lg">
