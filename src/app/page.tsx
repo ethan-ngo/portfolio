@@ -67,7 +67,14 @@ const projects = [
   },
 ];
 
-const experiences = [
+const experiences: Array<{
+	company: string | React.ReactNode;
+	position: string;
+	location: string;
+	date: string;
+	logo: string;
+	tags: string[];
+}> = [
 	{
 		company: 'FOX',
 		position: 'Software Engineer',
@@ -101,7 +108,7 @@ const experiences = [
 		tags: ['Dr. Bhandari'],
 	},
   {
-		company: 'SWE Association',
+		company: <>Software Engineering<br/>Association</>,
 		position: 'Frontend Developer',
 		location: 'Pomona, CA',
 		date: '06/2023 - 05/2024',
@@ -237,7 +244,7 @@ export default function Home() {
 									{experiences.map((e, idx) => (
 										<tr key={e.company + e.position} className="border-t border-[#31323d]">
 											<td className="flex items-center gap-4 px-8 py-6">
-												<img src={e.logo} alt={e.company} className="w-12 h-12 rounded-full object-cover bg-[#181926] border-2 border-[#232532]" />
+												<img src={e.logo} alt={e.company as string} className="w-12 h-12 rounded-full object-cover bg-[#181926] border-2 border-[#232532]" />
 												<div>
 													<div className="font-bold text-white text-lg">{e.company}</div>
 													<div className="text-gray-400 text-sm">{e.location}</div>
