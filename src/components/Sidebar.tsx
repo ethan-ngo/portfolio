@@ -37,7 +37,7 @@ const Sidebar = () => {
       <div className="hidden md:block">
           <nav 
             aria-label="Main navigation" 
-            className="fixed left-4 top-1/2 transform -translate-y-1/2 bg-[#1a1b26] text-white rounded-lg shadow-lg z-50 p-2"
+            className="fixed left-2 top-1/2 transform -translate-y-1/2 bg-[#1a1b26] text-white rounded-lg shadow-lg z-50 p-2"
           >
           <div className="flex flex-col gap-2">
             <button 
