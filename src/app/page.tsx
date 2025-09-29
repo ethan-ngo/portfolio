@@ -156,7 +156,7 @@ export default function Home() {
 	// Remove hashchange logic; all sections are always visible
 
 	return (
-		<div className="min-h-screen bg-[#13141f] text-white pl-20">
+		<div className="min-h-screen bg-[#13141f] text-white">
 			<main className="container mx-auto px-4">
 				{/* Introduction */}
 				<section id="home" className="min-h-screen flex flex-col justify-center">
