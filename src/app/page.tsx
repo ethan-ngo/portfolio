@@ -235,9 +235,9 @@ export default function Home() {
 							<table className="min-w-full bg-[#232532] rounded-xl overflow-hidden shadow-lg">
 								<thead>
 									<tr className="text-left text-lg text-white">
-										<th className="px-8 py-6 font-bold">COMPANY</th>
-										<th className="px-8 py-6 font-bold">POSITION</th>
-										<th className="px-8 py-6 font-bold">DATE</th>
+										<th className="px-8 py-6 font-bold w-2/5">COMPANY</th>
+										<th className="px-8 py-6 font-bold w-2/5">POSITION</th>
+										<th className="px-8 py-6 font-bold w-1/5">DATE</th>
 									</tr>
 								</thead>
 								<tbody>
