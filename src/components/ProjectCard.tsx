@@ -1,13 +1,18 @@
+
 interface ProjectCardProps {
   title: string;
   description: string;
   image: string;
   technologies: string[];
+  link?: string;
 }
 
-const ProjectCard = ({ title, description, image, technologies }: ProjectCardProps) => {
-  return (
-    <div className="bg-[#1a1b26] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+
+const ProjectCard = ({ title, description, image, technologies, link }: ProjectCardProps) => {
+  const cardContent = (
+    <div
+      className="bg-[#1a1b26] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 cursor-pointer"
+    >
       <img src={image} alt={title} className="w-full h-48 object-cover" />
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
@@ -25,6 +30,15 @@ const ProjectCard = ({ title, description, image, technologies }: ProjectCardPro
       </div>
     </div>
   );
+
+  if (link) {
+    return (
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        {cardContent}
+      </a>
+    );
+  }
+  return cardContent;
 };
 
 export default ProjectCard;
