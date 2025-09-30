@@ -11,6 +11,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Ethan Ngo",
   description: "My personal portfolio website",
+  openGraph: {
+    images: [
+      {
+        url: "/images/ethan.jpg"
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
