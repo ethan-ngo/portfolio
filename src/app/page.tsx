@@ -192,8 +192,7 @@ export default function Home() {
 								<span className="border-r-2 border-[#00b4d8] ml-1 animate-pulse">&nbsp;</span>
 							</h1>
 							<p className="text-xl text-gray-300 mb-6">
-								Passionate about building innovative solutions and creating
-								impactful experiences through code.
+								Currently I'm studying computer science and data science at California State Polytechnic University, Pomona.
 							</p>
 							<div className="flex gap-4 mt-4">
 								<a
