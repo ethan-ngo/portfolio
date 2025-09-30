@@ -1,4 +1,6 @@
 
+import Image from "next/image";
+
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -13,7 +15,7 @@ const ProjectCard = ({ title, description, image, technologies, link }: ProjectC
     <div
       className="bg-[#1a1b26] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 cursor-pointer"
     >
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
+         <Image src={image} alt={title} width={400} height={192} className="w-full h-48 object-cover" />
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
         <p className="text-gray-300 mb-4">{description}</p>

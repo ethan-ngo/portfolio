@@ -1,8 +1,9 @@
 "use client";
 
 import { FaLinkedin, FaGithub, FaFileAlt } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectCard from '@/components/ProjectCard';
+import Image from "next/image";
 
 const projects = [
   {
@@ -192,7 +193,7 @@ export default function Home() {
 								<span className="border-r-2 border-[#00b4d8] ml-1 animate-pulse">&nbsp;</span>
 							</h1>
 							<p className="text-xl text-gray-300 mb-6">
-								Currently I'm studying computer science and data science at California State Polytechnic University, Pomona.
+								Currently I&apos;m studying computer science and data science at California State Polytechnic University, Pomona.
 							</p>
 							<div className="flex gap-4 mt-4">
 								<a
@@ -223,9 +224,9 @@ export default function Home() {
 							</div>
 						</div>
 						<div className="flex justify-center md:col-span-5 w-full">
-							<div className="w-72 h-72 rounded-full bg-gray-800 ring-8 ring-gray-700 overflow-hidden flex items-center justify-center">
-								<img src="/images/profile.jpg" alt="profile" className="w-full h-full object-cover" />
-							</div>
+											<div className="w-72 h-72 rounded-full bg-gray-800 ring-8 ring-gray-700 overflow-hidden flex items-center justify-center">
+												<Image src="/images/profile.jpg" alt="profile" width={288} height={288} className="w-full h-full object-cover" priority />
+											</div>
 						</div>
 					</div>
 				</section>
@@ -256,10 +257,10 @@ export default function Home() {
 									</tr>
 								</thead>
 								<tbody>
-									{experiences.map((e, idx) => (
+													{experiences.map((e) => (
 										<tr key={e.company + e.position} className="border-t border-[#31323d]">
 											<td className="flex items-center gap-4 px-8 py-6">
-												<img src={e.logo} alt={e.company as string} className="w-12 h-12 rounded-full object-cover bg-[#181926] border-2 border-[#232532]" />
+																		<Image src={e.logo} alt={typeof e.company === 'string' ? e.company : 'company logo'} width={48} height={48} className="w-12 h-12 rounded-full object-cover bg-[#181926] border-2 border-[#232532]" />
 												<div>
 													<div className="font-bold text-white text-lg">{e.company}</div>
 													<div className="text-gray-400 text-sm">{e.location}</div>
