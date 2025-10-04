@@ -10,7 +10,7 @@ const projects = [
     title: "RootsAI",
     description: "This application helps families navigate government assistance programs using agentic AI. RootsAI maintains conversations that remember users' details across sessions, providing personalized guidance in the user's preferred language to simplify complex government processes. Awarded Best Use of Letta at Diamond Hacks 2025. ",
     image: "/images/rootsai.png",
-    technologies: ["React", "TypeScript", "FastAPI", "Whisper", "Gemini API", "Auth0", "Docker", "Letta"],
+    technologies: ["React", "TypeScript", "FastAPI", "Whisper", "Gemini API", "Auth0", "Docker"],
 	link: "https://www.hackroots.tech/",
 	githubLink: "https://github.com/lyeric2022/diamondhacks2025",
   },
@@ -18,7 +18,7 @@ const projects = [
     title: "Domain Films",
     description: "In my Software Engineering course, I codeveloped with 4 students a full-stack movie streaming app. The project features both web and mobile interfaces, allowing users to browse, search, get recommended, and stream movies and shows seamlessly across devices.",
     image: "/images/domainfilms.png",
-    technologies: ["MongoDB", "React Native", "Express.js", "Node.js", "Javascript", "Expo", "AWS", "Jellyfin"],
+    technologies: ["MongoDB", "React","React Native", "Express.js", "Node.js", "JavaScript", "Expo", "AWS", "Jellyfin", "Linux", "Cloudflare"],
 	githubLink: "https://github.com/ethan-ngo/CS4800-Netflix"
   },
   {
@@ -33,7 +33,7 @@ const projects = [
     title: "Live Aid",
     description: "Comprehensive financial impact dashboard that visualizes the economic consequences of displacement in conflict regions. Key features include interactive map visualization, economic loss estimation, predictive modeling, and AI based resource allocation recommendations. Awarded Wolfram Alpha and vly.ai prizes at Hacktech 2025.",
     image: "/images/liveaid.png",
-    technologies: ["Convex", "OpenAI API", "Next.js", "TypeScript", "scikit-learn", "Python", "newsdata.io"],
+    technologies: ["Convex", "OpenAI API", "Next.js", "TypeScript", "Pandas", "Numpy", "Scikit-learn", "Python", "Newsdata.io"],
 	githubLink: "https://github.com/xhcarina/Hacktech25-LiveAid",
 	link: "https://dyzlq9-3000.csb.app/"
   },
@@ -41,23 +41,23 @@ const projects = [
     title: "Carbon Closet",
     description: "A gamified thrift e-commerce platform that streamlines buying, selling, and donating vintage clothes. It aims to save users time while encouraging sustainable fashion through an engaging token and gacha reward system. Won 3rd at Broncohacks 2025.",
     image: "/images/carboncloset.png",
-    technologies: ["Firebase", "Next.js", "Python", "JavaScript", "Flask", "ShadCN"],
+    technologies: ["Firebase", "Next.js", "Python", "JavaScript", "Flask", "ShadCN", "Tailwind CSS"],
 	githubLink: "https://github.com/uuriah/LeBroncoHacks",
 	link: "https://www.youtube.com/watch?v=Rzp-D-KonUo"
   },
   {
-    title: "Recycle or Not",
-    description: "Computer vision web app that detects and classifys items as recyclabe in real time using the Ultrallytics YOLO model. Awarded best sustainibility project at Rosehacks 2025.",
-    image: "/images/recycle.jpg",
-    technologies: ["OpenCV", "Python", "Flask", "JavaScript", "React"],
-	githubLink: "https://github.com/joshmre/computer-vision-webapp",
-	link: "https://www.youtube.com/watch?v=oJyRTPOPXxo"
+	title: "Breast Cancer Detection",
+	description:"In my Machine Learning course, I developed a 4-layer convolutional neural network for breast cancer classification using histopathological images from the BreakHis dataset. The model achieved 89.3% accuracy and 94.4% precision in distinguishing malignant from benign tumors, significantly reducing false negatives from 250 to 56 compared to a 3-layer architecture.",
+	image: "/images/benign.png",
+	technologies: ["Python", "TensorFlow", "Keras", "Jupyter Notebook", "Scikit-learn", "Pandas", "Numpy", "Matplotlib"],
+	githubLink: "https://github.com/ethan-ngo/breast-cancer-detection",
+	link: "ML_4200_Report.pdf"
   },
-   {
+  {
     title: "UAV Obstacle Avoidance",
     description: "Worked on the LiDAR team among a group of 30 students to compete in the SUAS competition. Researched and developed an algorithm to convert PointCloud2 data into a set of closest obstacle points that a Pixhawk can consume via MAVLink messages.",
     image: "/images/lidar2.png",
-    technologies: ["ROS", "Python","C++", "Linux", "Bash", "PointCloud2", "JetsonNano", "LiDAR"],
+    technologies: ["ROS", "Python","C++", "Linux", "Bash", "JetsonNano", "LiDAR"],
 	githubLink: "https://github.com/CPP-Aerial-Vision-Analysis-System/Obstacle_Avoidance_2024-2025"
   },
   {
@@ -71,24 +71,32 @@ const projects = [
     title: "Personal Scheduling System",
     description: "A smart digital planner that makes it easy for you to plan your day, week, or month without any scheduling conflicts. It's built using a Model-View-Controller architecture and is designed with object-oriented programming principles.",
     image: "/images/pss2.png",
-    technologies: ["Next.js", "JavaScript", "Python", "Flask"],
+    technologies: ["Next.js", "JavaScript", "Python", "Flask", "Tailwind CSS"],
 	githubLink: "https://github.com/omarcruz999/PersonalSchedulingSystem",
 	link: "https://www.youtube.com/watch?v=4dcPYF_yOcw"
   },
   {
     title: "Real-Time Chat",
-    description: "For my systems programming class, I built a multi-user, real-time chat system, using TCP sockets and threads. It allows multiple client programs to connect to a server, send messages, and have the messages relayed to all other connected clients.",
+    description: "For my Systems Programming course, I built a multi-user, real-time chat system, using TCP sockets and threads. It allows multiple client programs to connect to a server, send messages, and have the messages relayed to all other connected clients.",
     image: "/images/chat.jpg",
     technologies: ["C", "Linux"],
 	githubLink: "https://github.com/ethan-ngo/cs2600"
   },
   {
     title: "Neon Navigator",
-    description: "Codeveloped with 5 students a 2.5D platformer game that splits between puzzle-solving and auto-scroller.",
+    description: "Codeveloped with 5 students in game development club a 2.5D platformer game that splits between puzzle-solving and auto-scroller.",
     image: "/images/neon.png",
     technologies: ["C#", "Unity"],
 	githubLink: "https://github.com/Lfer58/Neon-Navigator",
 	link:"https://www.youtube.com/watch?v=AJF5Z4aIbgA"
+  },
+  {
+    title: "Recycle or Not",
+    description: "Computer vision web app that detects and classifys items as recyclabe in real time using the Ultrallytics YOLO model. Awarded best sustainibility project at Rosehacks 2025.",
+    image: "/images/recycle.jpg",
+    technologies: ["OpenCV", "Python", "Flask", "JavaScript", "React"],
+	githubLink: "https://github.com/joshmre/computer-vision-webapp",
+	link: "https://www.youtube.com/watch?v=oJyRTPOPXxo"
   },
 ];
 
@@ -159,8 +167,56 @@ export default function Home() {
 	const [typingIndex, setTypingIndex] = useState(0);
 	const [charIndex, setCharIndex] = useState(0);
 	const [isDeleting, setIsDeleting] = useState(false);
+	const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
+	const [searchTerm, setSearchTerm] = useState("");
+	const [showDropdown, setShowDropdown] = useState(false);
 	const typingDelay = 100;
 	const pauseDelay = 1600;
+
+	// Get all unique technologies from projects
+	const allTechnologies = Array.from(
+		new Set(projects.flatMap(project => project.technologies))
+	).sort();
+
+	// Filter technologies based on search term
+	const filteredTechnologies = allTechnologies.filter(tech => 
+		tech.toLowerCase().includes(searchTerm.toLowerCase()) && 
+		!selectedTechs.includes(tech)
+	);
+
+	// Filter projects based on selected technologies
+	const filteredProjects = selectedTechs.length > 0
+		? projects.filter(project => 
+			selectedTechs.every(tech => project.technologies.includes(tech))
+		)
+		: projects;
+
+	// Add technology to filter
+	const addTechnology = (tech: string) => {
+		if (!selectedTechs.includes(tech)) {
+			setSelectedTechs([...selectedTechs, tech]);
+		}
+		setSearchTerm("");
+		setShowDropdown(false);
+	};
+
+	// Remove technology from filter
+	const removeTechnology = (tech: string) => {
+		setSelectedTechs(selectedTechs.filter(t => t !== tech));
+	};
+
+	// Clear all filters
+	const clearAllFilters = () => {
+		setSelectedTechs([]);
+		setSearchTerm("");
+	};
+
+	// Handle Enter key press
+	const handleKeyPress = (e: React.KeyboardEvent) => {
+		if (e.key === 'Enter' && filteredTechnologies.length > 0) {
+			addTechnology(filteredTechnologies[0]);
+		}
+	};
 
 	// Typing animation effect
 	useEffect(() => {
@@ -242,19 +298,123 @@ export default function Home() {
 				{/* Projects */}
 				<section id="projects" className="py-20 min-h-screen flex items-center">
 					<div className="w-full px-4">
-						<h2 className="text-4xl font-bold mb-8">Projects</h2>
+						<h2 className="text-4xl font-bold mb-8 text-center">Projects</h2>
+						
+						{/* Technology Filter */}
+						<div className="mb-8">
+							{/* Search Input */}
+							<div className="max-w-md mx-auto mb-6 relative">
+								<div className="relative">
+									<input
+										type="text"
+										placeholder="Search and add technologies..."
+										value={searchTerm}
+										onChange={(e) => {
+											setSearchTerm(e.target.value);
+											setShowDropdown(e.target.value.length > 0);
+										}}
+										onKeyPress={handleKeyPress}
+										onFocus={() => setShowDropdown(searchTerm.length > 0)}
+										className="w-full px-4 py-3 bg-[#2a2b36] text-white rounded-lg border border-[#393b48] focus:border-[#00b4d8] focus:outline-none transition-colors"
+									/>
+									{searchTerm && (
+										<button
+											onClick={() => {
+												setSearchTerm("");
+												setShowDropdown(false);
+											}}
+											className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"
+										>
+											✕
+										</button>
+									)}
+								</div>
+
+								{/* Dropdown */}
+								{showDropdown && filteredTechnologies.length > 0 && (
+									<div className="absolute top-full left-0 right-0 mt-1 bg-[#2a2b36] border border-[#393b48] rounded-lg shadow-xl z-50 max-h-48 overflow-y-auto">
+										{filteredTechnologies.map((tech) => {
+											const count = projects.filter(p => p.technologies.includes(tech)).length;
+											return (
+												<button
+													key={tech}
+													onClick={() => addTechnology(tech)}
+													className="w-full px-4 py-2 text-left hover:bg-[#393b48] text-white transition-colors flex justify-between items-center"
+												>
+													<span>{tech}</span>
+													<span className="text-gray-400 text-sm">({count})</span>
+												</button>
+											);
+										})}
+									</div>
+								)}
+							</div>
+
+							{/* Selected Technologies */}
+							{selectedTechs.length > 0 && (
+								<div className="flex flex-wrap justify-center gap-2 mb-6">
+									{selectedTechs.map((tech) => (
+										<div
+											key={tech}
+											className="flex items-center gap-2 px-3 py-2 bg-[#00b4d8] text-white rounded-full text-sm font-medium"
+										>
+											<span>{tech}</span>
+											<button
+												onClick={() => removeTechnology(tech)}
+												className="hover:bg-[#0094c2] rounded-full w-5 h-5 flex items-center justify-center transition-colors"
+											>
+												✕
+											</button>
+										</div>
+									))}
+									<button
+										onClick={clearAllFilters}
+										className="px-3 py-2 bg-[#2a2b36] text-gray-300 rounded-full text-sm hover:bg-[#393b48] hover:text-white transition-colors"
+									>
+										Clear All
+									</button>
+								</div>
+							)}
+
+						</div>
+
+						{/* Projects Grid */}
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-							{projects.map((p) => (
-								<ProjectCard key={p.title} {...p} />
+							{filteredProjects.map((p, index) => (
+								<div
+									key={p.title}
+									className="opacity-0 animate-fadeIn"
+									style={{ 
+										animationDelay: `${index * 100}ms`,
+										animationFillMode: 'forwards'
+									}}
+								>
+									<ProjectCard {...p} />
+								</div>
 							))}
 						</div>
+						
+						{/* No Results Message */}
+						{filteredProjects.length === 0 && selectedTechs.length > 0 && (
+							<div className="text-center py-12">
+								<div className="text-gray-400 text-lg">
+									No projects found using <span className="text-[#00b4d8] font-semibold">{selectedTechs.join(" AND ")}</span>
+								</div>
+								<button 
+									onClick={clearAllFilters}
+									className="mt-4 px-6 py-2 bg-[#00b4d8] text-white rounded-full hover:bg-[#0094c2] transition-colors"
+								>
+									View All Projects
+								</button>
+							</div>
+						)}
 					</div>
 				</section>
 
 				{/* Experience */}
 				<section id="experience" className="py-20 min-h-screen flex items-center">
 					<div className="w-full px-4">
-						<h2 className="text-4xl font-bold mb-8">Experience</h2>
+						<h2 className="text-4xl font-bold mb-12 text-center">Experience</h2>
 						<div className="overflow-x-auto">
 							<table className="min-w-full bg-[#232532] rounded-xl overflow-hidden shadow-lg">
 								<thead>
