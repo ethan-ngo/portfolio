@@ -51,7 +51,7 @@ const projects = [
 	image: "/images/benign.png",
 	technologies: ["Python", "TensorFlow", "Keras", "Jupyter Notebook", "Scikit-learn", "Pandas", "Numpy", "Matplotlib"],
 	githubLink: "https://github.com/ethan-ngo/breast-cancer-detection",
-	link: "ML_4200_Report.pdf"
+	link: "/ML_4200_Report.pdf"
   },
   {
     title: "UAV Obstacle Avoidance",
