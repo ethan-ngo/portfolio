@@ -4,7 +4,7 @@ import { FaHome, FaProjectDiagram, FaBriefcase, FaBars, FaTimes } from 'react-ic
 import { useState, useEffect } from 'react';
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Update CSS custom property when sidebar state changes
   useEffect(() => {

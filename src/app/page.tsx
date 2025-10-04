@@ -11,20 +11,22 @@ const projects = [
     description: "This application helps families navigate government assistance programs using agentic AI. RootsAI maintains conversations that remember users' details across sessions, providing personalized guidance in the user's preferred language to simplify complex government processes. Awarded Best Use of Letta at Diamond Hacks 2025. ",
     image: "/images/rootsai.png",
     technologies: ["React", "TypeScript", "FastAPI", "Whisper", "Gemini API", "Auth0", "Docker", "Letta"],
-	link: "https://www.hackroots.tech/"
+	link: "https://www.hackroots.tech/",
+	githubLink: "https://github.com/lyeric2022/diamondhacks2025",
   },
   {
     title: "Domain Films",
     description: "In my Software Engineering course, I codeveloped with 4 students a full-stack movie streaming app. The project features both web and mobile interfaces, allowing users to browse, search, get recommended, and stream movies and shows seamlessly across devices.",
     image: "/images/domainfilms.png",
     technologies: ["MongoDB", "React Native", "Express.js", "Node.js", "Javascript", "Expo", "AWS", "Jellyfin"],
-	link: "https://github.com/ethan-ngo/CS4800-Netflix"
+	githubLink: "https://github.com/ethan-ngo/CS4800-Netflix"
   },
   {
     title: "ZeroG Inbox",
     description: "The tinder for email organization connects to gmail account. In one swipe, eliminate inbox clutter with AI powered summarizations, folder management, and smart replies. Awarded Best AI/ML project at Fullyhacks 2025 ",
     image: "/images/zerog.png",
     technologies: ["Next.js", "TypeScript", "Python", "Flask", "Clerk", "Gemini API", "Gmail API", "ShadCN", "Tailwind CSS"],
+	githubLink: "https://github.com/ethan-ngo/fullyhacks2025",
 	link: "https://youtu.be/j9X4relETyw?si=08JLia7NaP0pBCPM"
   },
   {
@@ -32,6 +34,7 @@ const projects = [
     description: "Comprehensive financial impact dashboard that visualizes the economic consequences of displacement in conflict regions. Key features include interactive map visualization, economic loss estimation, predictive modeling, and AI based resource allocation recommendations. Awarded Wolfram Alpha and vly.ai prizes at Hacktech 2025.",
     image: "/images/liveaid.png",
     technologies: ["Convex", "OpenAI API", "Next.js", "TypeScript", "scikit-learn", "Python", "newsdata.io"],
+	githubLink: "https://github.com/xhcarina/Hacktech25-LiveAid",
 	link: "https://dyzlq9-3000.csb.app/"
   },
   {
@@ -39,6 +42,7 @@ const projects = [
     description: "A gamified thrift e-commerce platform that streamlines buying, selling, and donating vintage clothes. It aims to save users time while encouraging sustainable fashion through an engaging token and gacha reward system. Won 3rd at Broncohacks 2025.",
     image: "/images/carboncloset.png",
     technologies: ["Firebase", "Next.js", "Python", "JavaScript", "Flask", "ShadCN"],
+	githubLink: "https://github.com/uuriah/LeBroncoHacks",
 	link: "https://www.youtube.com/watch?v=Rzp-D-KonUo"
   },
   {
@@ -46,6 +50,7 @@ const projects = [
     description: "Computer vision web app that detects and classifys items as recyclabe in real time using the Ultrallytics YOLO model. Awarded best sustainibility project at Rosehacks 2025.",
     image: "/images/recycle.jpg",
     technologies: ["OpenCV", "Python", "Flask", "JavaScript", "React"],
+	githubLink: "https://github.com/joshmre/computer-vision-webapp",
 	link: "https://www.youtube.com/watch?v=oJyRTPOPXxo"
   },
    {
@@ -53,19 +58,21 @@ const projects = [
     description: "Worked on the LiDAR team among a group of 30 students to compete in the SUAS competition. Researched and developed an algorithm to convert PointCloud2 data into a set of closest obstacle points that a Pixhawk can consume via MAVLink messages.",
     image: "/images/lidar2.png",
     technologies: ["ROS", "Python","C++", "Linux", "Bash", "PointCloud2", "JetsonNano", "LiDAR"],
+	githubLink: "https://github.com/CPP-Aerial-Vision-Analysis-System/Obstacle_Avoidance_2024-2025"
   },
   {
     title: "Icebreak",
     description: "Worked with CPP SEA club to create a central hub for members to be always updated on the latest events while providing features to incentivize member growth. Designed responsive user-interfaces.",
     image: "/images/icebreak.png",
     technologies: ["Expo", "React Native", "JavaScript", "Express.js", "PostgreSQL", "Prisma", "Redis"],
-	link: "https://github.com/cppsea/icebreak"
+	githubLink: "https://github.com/cppsea/icebreak"
   },
   {
     title: "Personal Scheduling System",
-    description: "A smart digital planner that makes it easy for you to plan your day, week, or month without any scheduling conflicts. It’s built using a Model-View-Controller architecture and is designed with object-oriented programming principles.",
+    description: "A smart digital planner that makes it easy for you to plan your day, week, or month without any scheduling conflicts. It's built using a Model-View-Controller architecture and is designed with object-oriented programming principles.",
     image: "/images/pss2.png",
     technologies: ["Next.js", "JavaScript", "Python", "Flask"],
+	githubLink: "https://github.com/omarcruz999/PersonalSchedulingSystem",
 	link: "https://www.youtube.com/watch?v=4dcPYF_yOcw"
   },
   {
@@ -73,13 +80,14 @@ const projects = [
     description: "For my systems programming class, I built a multi-user, real-time chat system, using TCP sockets and threads. It allows multiple client programs to connect to a server, send messages, and have the messages relayed to all other connected clients.",
     image: "/images/chat.jpg",
     technologies: ["C", "Linux"],
-	link: "https://github.com/ethan-ngo/cs2600"
+	githubLink: "https://github.com/ethan-ngo/cs2600"
   },
   {
     title: "Neon Navigator",
     description: "Codeveloped with 5 students a 2.5D platformer game that splits between puzzle-solving and auto-scroller.",
     image: "/images/neon.png",
     technologies: ["C#", "Unity"],
+	githubLink: "https://github.com/Lfer58/Neon-Navigator",
 	link:"https://www.youtube.com/watch?v=AJF5Z4aIbgA"
   },
 ];
