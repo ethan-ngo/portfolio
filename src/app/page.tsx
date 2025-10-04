@@ -413,42 +413,57 @@ export default function Home() {
 
 				{/* Experience */}
 				<section id="experience" className="py-20 min-h-screen flex items-center">
-					<div className="w-full px-4">
+					<div className="w-full px-4 max-w-6xl mx-auto">
 						<h2 className="text-4xl font-bold mb-12 text-center">Experience</h2>
-						<div className="overflow-x-auto">
-							<table className="min-w-full bg-[#232532] rounded-xl overflow-hidden shadow-lg">
-								<thead>
-									<tr className="text-left text-lg text-white">
-										<th className="px-8 py-6 font-bold w-2/5">COMPANY</th>
-										<th className="px-8 py-6 font-bold w-2/5">POSITION</th>
-										<th className="px-8 py-6 font-bold w-1/5">DATE</th>
-									</tr>
-								</thead>
-								<tbody>
-													{experiences.map((e) => (
-										<tr key={e.company + e.position} className="border-t border-[#31323d]">
-											<td className="flex items-center gap-4 px-8 py-6">
-																		<Image src={e.logo} alt={typeof e.company === 'string' ? e.company : 'company logo'} width={48} height={48} className="w-12 h-12 rounded-full object-cover bg-[#181926] border-2 border-[#232532]" />
-												<div>
-													<div className="font-bold text-white text-lg">{e.company}</div>
-													<div className="text-gray-400 text-sm">{e.location}</div>
-												</div>
-											</td>
-											<td className="px-8 py-6 align-top">
-												<div className="font-semibold text-white text-lg">{e.position}</div>
-												<div className="flex flex-wrap gap-2 mt-2">
-													{e.tags.map((tag) => (
-														<span key={tag} className="px-3 py-1 bg-[#393b48] text-gray-200 rounded-full text-sm">
-															{tag}
-														</span>
-													))}
-												</div>
-											</td>
-											<td className="px-8 py-6 align-top text-white text-lg whitespace-nowrap">{e.date}</td>
+						<div className="overflow-x-auto flex justify-center">
+							<div className="w-full max-w-5xl">
+								<table className="w-full bg-[#232532] rounded-xl overflow-hidden shadow-lg">
+									<thead>
+										<tr className="text-left text-lg text-white">
+											<th className="px-8 py-6 font-bold w-2/5">COMPANY</th>
+											<th className="px-8 py-6 font-bold w-2/5">POSITION</th>
+											<th className="px-8 py-6 font-bold w-1/5">DATE</th>
 										</tr>
-									))}
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+														{experiences.map((e, index) => (
+											<tr 
+												key={e.company + e.position} 
+												className="border-t border-[#31323d] hover:-translate-y-2 hover:bg-[#2a2b36] hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group animate-fadeIn"
+												style={{
+													animationDelay: `${index * 200}ms`
+												}}
+											>
+												<td className="flex items-center gap-4 px-8 py-6">
+																			<Image src={e.logo} alt={typeof e.company === 'string' ? e.company : 'company logo'} width={48} height={48} className="w-12 h-12 rounded-full object-cover bg-[#181926] border-2 border-[#232532] group-hover:border-[#00b4d8] transition-colors duration-300" />
+													<div>
+														<div className="font-bold text-white text-lg group-hover:text-[#00b4d8] transition-colors duration-300">{e.company}</div>
+														<div className="text-gray-400 text-sm">{e.location}</div>
+													</div>
+												</td>
+												<td className="px-8 py-6 align-top">
+													<div className="font-semibold text-white text-lg group-hover:text-[#00b4d8] transition-colors duration-300">{e.position}</div>
+													<div className="flex flex-wrap gap-2 mt-2">
+														{e.tags.map((tag) => (
+															<span key={tag} className="px-3 py-1 bg-[#393b48] text-gray-200 rounded-full text-sm">
+																{tag}
+															</span>
+														))}
+													</div>
+												</td>
+												<td className="px-8 py-6 align-top text-white text-lg whitespace-nowrap group-hover:text-[#00b4d8] transition-colors duration-300">
+													<div className="flex items-center gap-2">
+														{e.date}
+														{e.date.includes('Present') && (
+															<div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" title="Currently Active"></div>
+														)}
+													</div>
+												</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</section>
