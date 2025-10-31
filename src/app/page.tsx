@@ -6,11 +6,19 @@ import ProjectCard from '@/components/ProjectCard';
 import Image from "next/image";
 
 const projects = [
-  {
+	{
+		title: "TriageFlow",
+		description: "AI-powered triage empowers nurses with instant, expert-level assistance on ESI assessments using Fetch.ai agents to manage Claude and ChromaDB, ensuring critical patients never wait while reducing nurse burnout. Built with synthetic HL7 FHIR standard patient data for RAG system. Features notification system on mobile responsive UI.",
+		image: "/images/queue.jpg",
+		technologies: ["React", "JavaScript", "Flask", "Python", "Claude", "ChromaDB", "Docker", "Twillio"],
+		link: "https://calhacks2025-nine.vercel.app/",
+		githubLink: "https://github.com/ethan-ngo/calhacks2025",
+	},
+	{
     title: "RootsAI",
     description: "This application helps families navigate government assistance programs using agentic AI. RootsAI maintains conversations that remember users' details across sessions, providing personalized guidance in the user's preferred language to simplify complex government processes. Awarded Best Use of Letta at Diamond Hacks 2025. ",
     image: "/images/rootsai.png",
-    technologies: ["React", "TypeScript", "FastAPI", "Whisper", "Gemini API", "Auth0", "Docker"],
+    technologies: ["React", "TypeScript", "FastAPI", "Python", "Whisper", "Gemini API", "Auth0", "Docker"],
 	link: "https://www.hackroots.tech/",
 	githubLink: "https://github.com/lyeric2022/diamondhacks2025",
   },
