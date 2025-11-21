@@ -116,14 +116,6 @@ const experiences: Array<{
 	logo: string;
 	tags: string[];
 }> = [
-	{
-		company: 'FOX',
-		position: 'Software Engineer',
-		location: 'Century City, CA',
-		date: '09/2025 - Present',
-		logo: '/images/fox.jpg',
-		tags: ['Internship'],
-	},
   {
 		company: 'Cal Poly Pomona',
 		position: 'ML Researcher',
@@ -131,6 +123,14 @@ const experiences: Array<{
 		date: '09/2025 - Present',
 		logo: '/images/cpp.jpg',
 		tags: ['Dr. Korah'],
+	},
+	{
+		company: 'FOX',
+		position: 'Software Engineer',
+		location: 'Century City, CA',
+		date: '09/2025 - 11/2025',
+		logo: '/images/fox.jpg',
+		tags: ['Internship'],
 	},
 	{
 		company: 'Neweggg',
