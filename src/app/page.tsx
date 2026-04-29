@@ -116,7 +116,23 @@ const experiences: Array<{
 	logo: string;
 	tags: string[];
 }> = [
-  {
+	{
+		company: 'Costar Group',
+		position: 'Software Engineer',
+		location: 'Irvine, CA',
+		date: '06/2026 - 08/2026',
+		logo: '/images/costar.jpg',
+		tags: ['Internship'],
+	},
+	{
+		company: 'Broncohacks 2026',
+		position: 'Lead Director',
+		location: 'Pomona, CA',
+		date: '09/2025 - Present',
+		logo: '/images/billyglobe.svg',
+		tags: ['Executive Board'],
+	},
+  	{
 		company: 'Cal Poly Pomona',
 		position: 'ML Researcher',
 		location: 'Pomona, CA',
