@@ -30,6 +30,14 @@ const projects = [
 	githubLink: "https://github.com/ethan-ngo/CS4800-Netflix"
   },
   {
+	title: "GIS ML Research",
+	description: "Undergraduate research with Dr. John Korah at Cal Poly Pomona fusing drone and satellite imagery for precision agriculture. I built a regression pipeline that predicts high-resolution UAV crop-health (NDVI) from coarse Landsat 8 and Sentinel-2 bands over a commercial strawberry field, comparing tree-based and linear models across three resampling methods, eight flight dates, and weather/soil features.",
+	image: "/images/strawberry.png",
+	technologies: ["Python", "scikit-learn", "XGBoost", "pandas", "NumPy", "matplotlib", "Jupyter", "Drone2Map", "ArcGIS"],
+	githubLink: "https://github.com/ethan-ngo/research",
+	link: "/Ethan_Ngo_CS4610_Proposal.pdf"
+  },
+  {
     title: "ZeroG Inbox",
     description: "The tinder for email organization connects to gmail account. In one swipe, eliminate inbox clutter with AI powered summarizations, folder management, and smart replies. Awarded Best AI/ML project at Fullyhacks 2025 ",
     image: "/images/zerog.png",
@@ -128,7 +136,7 @@ const experiences: Array<{
 		company: 'Broncohacks 2026',
 		position: 'Lead Director',
 		location: 'Pomona, CA',
-		date: '09/2025 - Present',
+		date: '09/2025 - 05/2026',
 		logo: '/images/billyglobe.svg',
 		tags: ['Executive Board'],
 	},
@@ -136,7 +144,7 @@ const experiences: Array<{
 		company: 'Cal Poly Pomona',
 		position: 'ML Researcher',
 		location: 'Pomona, CA',
-		date: '09/2025 - Present',
+		date: '09/2025 - 05/2026',
 		logo: '/images/cpp.jpg',
 		tags: ['Dr. Korah'],
 	},
