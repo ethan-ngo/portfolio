@@ -19,7 +19,6 @@ const projects = [
     description: "This application helps families navigate government assistance programs using agentic AI. RootsAI maintains conversations that remember users' details across sessions, providing personalized guidance in the user's preferred language to simplify complex government processes. Awarded Best Use of Letta at Diamond Hacks 2025. ",
     image: "/images/rootsai.png",
     technologies: ["React", "TypeScript", "FastAPI", "Python", "Whisper", "Gemini API", "Auth0", "Docker"],
-	link: "https://www.hackroots.tech/",
 	githubLink: "https://github.com/lyeric2022/diamondhacks2025",
   },
   {
@@ -38,6 +37,14 @@ const projects = [
 	link: "/Ethan_Ngo_CS4610_Proposal.pdf"
   },
   {
+	title: "GPU Portfolio Optimization",
+	description: "For my CS 4220 final project, I accelerated Markowitz mean-variance portfolio optimization with a custom CUDA covariance kernel and cuBLAS-powered gradient descent. Benchmarked on an NVIDIA A40 (NCSA Delta) against a C++17 CPU baseline, the covariance step reached up to 100× speedup across portfolios of 50 to 1,250 assets.",
+	image: "/images/gpu.png",
+	technologies: ["CUDA", "C++", "cuBLAS", "Thrust", "Python", "pandas", "yfinance", "Make"],
+	githubLink: "https://github.com/ethan-ngo/FinalProject",
+	link: "/CS4220_Final_Project.pdf"
+  },
+  {
     title: "ZeroG Inbox",
     description: "The tinder for email organization connects to gmail account. In one swipe, eliminate inbox clutter with AI powered summarizations, folder management, and smart replies. Awarded Best AI/ML project at Fullyhacks 2025 ",
     image: "/images/zerog.png",
@@ -51,7 +58,6 @@ const projects = [
     image: "/images/liveaid.png",
     technologies: ["Convex", "OpenAI API", "Next.js", "TypeScript", "Pandas", "Numpy", "Scikit-learn", "Python", "Newsdata.io"],
 	githubLink: "https://github.com/xhcarina/Hacktech25-LiveAid",
-	link: "https://dyzlq9-3000.csb.app/"
   },
   {
     title: "Carbon Closet",
@@ -88,7 +94,7 @@ const projects = [
     description: "A smart digital planner that makes it easy for you to plan your day, week, or month without any scheduling conflicts. It's built using a Model-View-Controller architecture and is designed with object-oriented programming principles.",
     image: "/images/pss2.png",
     technologies: ["Next.js", "JavaScript", "Python", "Flask", "Tailwind CSS"],
-	githubLink: "https://github.com/omarcruz999/PersonalSchedulingSystem",
+	githubLink: "https://github.com/cruzomar/PersonalSchedulingSystem",
 	link: "https://www.youtube.com/watch?v=4dcPYF_yOcw"
   },
   {
