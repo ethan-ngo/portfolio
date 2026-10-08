@@ -302,7 +302,7 @@ export default function Home() {
 								<span className="border-r-2 border-[#00b4d8] ml-1 animate-pulse">&nbsp;</span>
 							</h1>
 							<p className="text-xl text-gray-300 mb-6">
-								Currently I&apos;m studying computer science and data science at California State Polytechnic University, Pomona.
+								I recently graduated from Cal Poly Pomona with a B.S. in Computer Science and a minor in Data Science. I build full-stack and AI-powered software.
 							</p>
 							<div className="flex gap-4 mt-4">
 								<a
@@ -322,7 +322,7 @@ export default function Home() {
 									<FaGithub size={32} />
 								</a>
 								<a
-									href="/Portfolio_Resume.pdf"
+									href="/Ethan_Ngo_Resume.pdf"
 									target="_blank"
 									rel="noreferrer"
 									className="text-[#00b4d8] hover:text-white transition-colors"
