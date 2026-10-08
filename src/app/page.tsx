@@ -7,6 +7,13 @@ import Image from "next/image";
 
 const projects = [
 	{
+		title: "Lawgiq",
+		description: "AI case dashboard for a personal-injury firm that digests a Clio matter for three audiences: the firm, the client's medical providers, and the client. A read-only pipeline OCRs case documents and uses AI to triage every note, task, and document and link related records, with every number tracing back to its source. Won 3rd place at the Swans x Law Di Gras 2026 Applied AI Hackathon.",
+		image: "/images/lawgiq.png",
+		technologies: ["Next.js", "TypeScript", "Python", "Claude", "Tesseract OCR", "PyMuPDF", "SQLite", "Clio API"],
+		githubLink: "https://github.com/aaronchiuwei/lawgiq",
+	},
+	{
 		title: "TriageFlow",
 		description: "AI-powered triage empowers nurses with instant, expert-level assistance on ESI assessments using Fetch.ai agents to manage Claude and ChromaDB, ensuring critical patients never wait while reducing nurse burnout. Built with synthetic HL7 FHIR standard patient data for RAG system. Features notification system on mobile responsive UI.",
 		image: "/images/queue.jpg",
