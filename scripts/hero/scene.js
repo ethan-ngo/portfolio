@@ -122,7 +122,8 @@ function panel(c, x, y, w, h, alpha, draw) {
 	c.fillRect(x, y, w, h);
 	c.fillStyle = `rgba(${CY},.08)`;
 	c.fillRect(x, y, w, h);
-	c.strokeStyle = `rgba(${CY},.75)`;
+	// Panel borders breathe slowly while idle.
+	c.strokeStyle = `rgba(${CY},${idle === null ? 0.75 : 0.6 + 0.25 * wave(1)})`;
 	c.lineWidth = 2;
 	c.strokeRect(x, y, w, h);
 	c.fillStyle = `rgba(${CY},.95)`;
@@ -134,21 +135,51 @@ function panel(c, x, y, w, h, alpha, draw) {
 // How much to darken the photo: the room starts dim and wakes up as it boots.
 export const photoDim = (p) => 0.45 - 0.35 * seg(p, 0.05, 0.5);
 
+// Idle phase (0..1) while drawIdle is rendering the loop that plays after the
+// boot-up; null during the boot-up itself. Every idle motion repeats a whole
+// number of times per loop so the last frame flows straight into the first.
+let idle = null;
+const TAU = Math.PI * 2;
+const wave = (cycles, offset = 0) => Math.sin(TAU * (idle * cycles + offset));
+// The faint scan pulse crosses the room once per loop.
+const idleScanX = () => (idle === null ? null : seg(idle, 0.25, 0.75) * PHOTO_W);
+
+export function drawIdle(c, q) {
+	idle = q;
+	drawFrame(c, 1);
+	idle = null;
+}
+
 export function drawFrame(c, p) {
-	// 1. Dots of light wake up across the room.
+	// 1. Dots of light wake up across the room; while idle they drift and twinkle.
 	for (const d of DOTS) {
-		const a = seg(p, 0.02 + d.delay, 0.08 + d.delay) * (1 - 0.6 * seg(p, 0.6, 0.9));
+		let a = seg(p, 0.02 + d.delay, 0.08 + d.delay) * (1 - 0.6 * seg(p, 0.6, 0.9));
+		let y = d.y;
+		if (idle !== null) {
+			a *= 0.75 + 0.5 * wave(1 + (d.delay > 0.12 ? 1 : 0), d.delay * 4);
+			y += 10 * wave(1, d.delay * 3);
+		}
 		if (a <= 0) continue;
 		c.fillStyle = `rgba(${CY},${0.8 * a})`;
 		c.shadowColor = `rgba(${CY},1)`;
 		c.shadowBlur = 10;
 		c.beginPath();
-		c.arc(d.x, d.y, d.size * 2, 0, Math.PI * 2);
+		c.arc(d.x, y, d.size * 2, 0, Math.PI * 2);
 		c.fill();
 		c.shadowBlur = 0;
 	}
 
-	// 2. A scan line sweeps the desk.
+	// 2. A scan line sweeps the desk (and a fainter pulse repeats while idle).
+	const pulse = idleScanX();
+	if (pulse !== null && pulse > 0 && pulse < PHOTO_W) {
+		const g = c.createLinearGradient(pulse - 180, 0, pulse, 0);
+		g.addColorStop(0, `rgba(${CY},0)`);
+		g.addColorStop(1, `rgba(${CY},.1)`);
+		c.fillStyle = g;
+		c.fillRect(pulse - 180, 0, 180, PHOTO_H);
+		c.fillStyle = `rgba(${CY},.35)`;
+		c.fillRect(pulse, 0, 2, PHOTO_H);
+	}
 	const scan = seg(p, 0.08, 0.34);
 	if (scan > 0 && scan < 1) {
 		const x = scan * PHOTO_W;
@@ -174,9 +205,11 @@ export function drawFrame(c, p) {
 		c.strokeStyle = `rgba(${CY},.85)`;
 		c.lineWidth = 3;
 		c.beginPath(); c.arc(cx, cy, r, 0, Math.PI * 2); c.stroke();
-		c.beginPath(); c.arc(cx, cy, r * 0.72, p * 8, p * 8 + 4); c.stroke();
-		c.beginPath(); c.arc(cx, cy, r * 0.45, -p * 10, -p * 10 + 2.5); c.stroke();
-		mono(c, 'SYSTEM ONLINE', cx - 84, cy + 108, 26, seg(p, 0.46, 0.52));
+		// While idle the inner rings keep turning: one and two full turns per loop.
+		const spin = idle === null ? 0 : TAU * idle;
+		c.beginPath(); c.arc(cx, cy, r * 0.72, p * 8 + spin, p * 8 + spin + 4); c.stroke();
+		c.beginPath(); c.arc(cx, cy, r * 0.45, -p * 10 - 2 * spin, -p * 10 - 2 * spin + 2.5); c.stroke();
+		mono(c, 'SYSTEM ONLINE', cx - 84, cy + 108, 26, seg(p, 0.46, 0.52) * (idle === null ? 1 : 0.85 + 0.15 * wave(2)));
 		c.restore();
 	}
 
@@ -212,6 +245,15 @@ export function drawFrame(c, p) {
 			used += line.length;
 			if (n > 0) mono(c, line.slice(0, n), left, TERMINAL_TOP + i * TERMINAL_STEP, TERMINAL_FONT, mon, line.startsWith('>') ? '160,170,190' : CY);
 		});
+		// While idle, a cursor blinks after the last line (4 blinks per loop). It stays
+		// on that line because the band below belongs to the site's icon buttons.
+		if (idle !== null && (idle * 4) % 1 < 0.5) {
+			const last = TERMINAL[TERMINAL.length - 1];
+			const y = TERMINAL_TOP + (TERMINAL.length - 1) * TERMINAL_STEP;
+			c.font = `500 ${TERMINAL_FONT}px Consolas, "Cascadia Mono", ui-monospace, monospace`;
+			c.fillStyle = `rgba(${CY},.9)`;
+			c.fillRect(left + c.measureText(last).width + 8, y - 13, 14, 26);
+		}
 		c.restore();
 		poly(c, MONITOR);
 		glowStroke(c, 0.7 * mon);
@@ -222,7 +264,12 @@ export function drawFrame(c, p) {
 	for (const o of OBJECTS) {
 		const k = easeOut(seg(p, o.at, o.at + 0.08));
 		if (k <= 0) continue;
-		const alpha = 1 - 0.45 * seg(p, 0.75, 0.95);
+		let alpha = 1 - 0.45 * seg(p, 0.75, 0.95);
+		// While idle, each outline brightens as the scan pulse passes over it.
+		if (pulse !== null) {
+			const [ox] = objectTop(o);
+			alpha = Math.min(1, alpha + 0.45 * Math.max(0, 1 - Math.abs(pulse - ox - 100) / 220));
+		}
 		traceObject(c, o, k, alpha);
 		if (k > 0.9) {
 			const [x, y] = objectTop(o);
