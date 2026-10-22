@@ -141,8 +141,6 @@ export const photoDim = (p) => 0.45 - 0.35 * seg(p, 0.05, 0.5);
 let idle = null;
 const TAU = Math.PI * 2;
 const wave = (cycles, offset = 0) => Math.sin(TAU * (idle * cycles + offset));
-// The faint scan pulse crosses the room once per loop.
-const idleScanX = () => (idle === null ? null : seg(idle, 0.25, 0.75) * PHOTO_W);
 
 export function drawIdle(c, q) {
 	idle = q;
@@ -169,17 +167,7 @@ export function drawFrame(c, p) {
 		c.shadowBlur = 0;
 	}
 
-	// 2. A scan line sweeps the desk (and a fainter pulse repeats while idle).
-	const pulse = idleScanX();
-	if (pulse !== null && pulse > 0 && pulse < PHOTO_W) {
-		const g = c.createLinearGradient(pulse - 180, 0, pulse, 0);
-		g.addColorStop(0, `rgba(${CY},0)`);
-		g.addColorStop(1, `rgba(${CY},.1)`);
-		c.fillStyle = g;
-		c.fillRect(pulse - 180, 0, 180, PHOTO_H);
-		c.fillStyle = `rgba(${CY},.35)`;
-		c.fillRect(pulse, 0, 2, PHOTO_H);
-	}
+	// 2. A scan line sweeps the desk.
 	const scan = seg(p, 0.08, 0.34);
 	if (scan > 0 && scan < 1) {
 		const x = scan * PHOTO_W;
@@ -264,12 +252,7 @@ export function drawFrame(c, p) {
 	for (const o of OBJECTS) {
 		const k = easeOut(seg(p, o.at, o.at + 0.08));
 		if (k <= 0) continue;
-		let alpha = 1 - 0.45 * seg(p, 0.75, 0.95);
-		// While idle, each outline brightens as the scan pulse passes over it.
-		if (pulse !== null) {
-			const [ox] = objectTop(o);
-			alpha = Math.min(1, alpha + 0.45 * Math.max(0, 1 - Math.abs(pulse - ox - 100) / 220));
-		}
+		const alpha = 1 - 0.45 * seg(p, 0.75, 0.95);
 		traceObject(c, o, k, alpha);
 		if (k > 0.9) {
 			const [x, y] = objectTop(o);
