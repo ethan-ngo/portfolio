@@ -3,13 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import { FaLinkedin, FaGithub, FaFileAlt } from "react-icons/fa";
 
-// The hero video is rendered by scripts/hero/render.mjs from the desk photo.
+// The hero videos are rendered by scripts/hero/render.mjs from the desk photo.
 // These match the photo's pixel space and LINK_BAND in scripts/hero/scene.js,
 // the empty band left on the monitor where the real links sit.
 const PHOTO_W = 2000;
 const PHOTO_H = 1500;
 const LINK_BAND = { x: 928, y: 540, w: 300, h: 80 };
-// Scroll progress at which the monitor has powered on in the video.
+// The boot-up plays a little slower than rendered so the terminal text is readable.
+const BOOT_SPEED = 0.75;
+// Fraction of the boot-up at which the monitor has powered on.
 const MONITOR_ON = 0.5;
 
 const links = [
@@ -19,18 +21,20 @@ const links = [
 ];
 
 type Band = { left: number; top: number; width: number; height: number };
+// "boot" plays once on load, then "idle" loops forever; "still" shows the finished
+// frame for reduced motion or when the browser blocks autoplay.
+type Phase = "boot" | "idle" | "still";
 
 const HeroBoot = () => {
-	const sectionRef = useRef<HTMLElement>(null);
 	const stageRef = useRef<HTMLDivElement>(null);
-	const videoRef = useRef<HTMLVideoElement>(null);
-	const hintRef = useRef<HTMLDivElement>(null);
+	const bootRef = useRef<HTMLVideoElement>(null);
+	const idleRef = useRef<HTMLVideoElement>(null);
 	const [band, setBand] = useState<Band | null>(null);
-	const [reducedMotion, setReducedMotion] = useState(false);
+	const [phase, setPhase] = useState<Phase>("boot");
 	const [monitorOn, setMonitorOn] = useState(false);
 
 	useEffect(() => {
-		setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setPhase("still");
 	}, []);
 
 	// Place the links over the monitor using the same cover crop as the video.
@@ -55,60 +59,70 @@ const HeroBoot = () => {
 		return () => observer.disconnect();
 	}, []);
 
-	// Scrub the video with the scroll position.
+	// Play the boot-up once, then hand off to the idle loop.
 	useEffect(() => {
-		if (reducedMotion) {
+		if (phase !== "boot") return;
+		const boot = bootRef.current;
+		const idle = idleRef.current;
+		if (!boot || !idle) return;
+
+		const finish = () => {
+			boot.pause();
 			setMonitorOn(true);
-			return;
-		}
-		const video = videoRef.current;
-		const section = sectionRef.current;
-		if (!video || !section) return;
-
-		// iOS only buffers a muted video once it has started playing.
-		video.play().then(() => video.pause()).catch(() => {});
-
-		let frame = 0;
-		const update = () => {
-			frame = 0;
-			const rect = section.getBoundingClientRect();
-			const scrollable = rect.height - window.innerHeight;
-			// Finish the boot a little before the end so the final state holds briefly.
-			const progress = Math.min(1, Math.max(0, -rect.top / (scrollable * 0.85)));
-			if (video.duration) video.currentTime = progress * (video.duration - 0.05);
-			if (hintRef.current) hintRef.current.style.opacity = String(1 - Math.min(1, progress * 12));
-			setMonitorOn(progress >= MONITOR_ON);
+			idle.play().then(() => setPhase("idle")).catch(() => setPhase("still"));
 		};
+		const onTime = () => {
+			if (boot.duration && boot.currentTime >= boot.duration * MONITOR_ON) setMonitorOn(true);
+		};
+		// Visitors who scroll away early skip straight to the finished room.
 		const onScroll = () => {
-			if (!frame) frame = requestAnimationFrame(update);
+			if (window.scrollY > 40) finish();
 		};
+
+		// Loading a video resets playbackRate to the default, so set both.
+		boot.defaultPlaybackRate = BOOT_SPEED;
+		boot.playbackRate = BOOT_SPEED;
+		boot.addEventListener("timeupdate", onTime);
+		boot.addEventListener("ended", finish);
 		window.addEventListener("scroll", onScroll, { passive: true });
-		video.addEventListener("loadedmetadata", update);
-		update();
+		boot.play().catch(() => setPhase("still"));
 		return () => {
+			boot.removeEventListener("timeupdate", onTime);
+			boot.removeEventListener("ended", finish);
 			window.removeEventListener("scroll", onScroll);
-			video.removeEventListener("loadedmetadata", update);
-			cancelAnimationFrame(frame);
 		};
-	}, [reducedMotion]);
+	}, [phase]);
 
 	return (
-		<section id="home" ref={sectionRef} className={reducedMotion ? "relative h-screen" : "relative h-[220vh]"}>
-			<div ref={stageRef} className="sticky top-0 h-screen overflow-hidden bg-black">
-				{reducedMotion ? (
+		<section id="home" className="relative h-screen">
+			<div ref={stageRef} className="relative h-full overflow-hidden bg-black">
+				{phase === "still" ? (
 					// eslint-disable-next-line @next/next/no-img-element
 					<img src="/hero/poster-end.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
 				) : (
-					<video
-						ref={videoRef}
-						src="/hero/boot.mp4"
-						poster="/hero/poster-start.jpg"
-						muted
-						playsInline
-						preload="auto"
-						aria-hidden="true"
-						className="absolute inset-0 h-full w-full object-cover"
-					/>
+					<>
+						<video
+							ref={bootRef}
+							src="/hero/boot.mp4"
+							poster="/hero/poster-start.jpg"
+							muted
+							playsInline
+							preload="auto"
+							aria-hidden="true"
+							className="absolute inset-0 h-full w-full object-cover"
+						/>
+						{/* Fades in over the boot-up's last frame so the handoff has no visible jump. */}
+						<video
+							ref={idleRef}
+							src="/hero/idle.mp4"
+							muted
+							playsInline
+							loop
+							preload="auto"
+							aria-hidden="true"
+							className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${phase === "idle" ? "opacity-100" : "opacity-0"}`}
+						/>
+					</>
 				)}
 
 				{/* Fade the room into the page background so the projects section follows on smoothly. */}
@@ -136,20 +150,14 @@ const HeroBoot = () => {
 								aria-label={label}
 								title={label}
 								className={`flex aspect-square h-full items-center justify-center rounded-lg border text-[clamp(1rem,2.2vw,1.9rem)] transition-all duration-500 hover:bg-[#00b4d8] hover:text-[#04161e] ${
-									monitorOn
+									monitorOn || phase === "still"
 										? "border-[#00b4d8] bg-[#04161e]/70 text-[#7fdcef] shadow-[0_0_18px_rgba(0,180,216,0.45)]"
 										: "border-[#00b4d8]/40 bg-black/40 text-[#7fdcef]/80"
-								}`}
+								} ${phase === "idle" ? "animate-breathe" : ""}`}
 							>
 								<Icon />
 							</a>
 						))}
-					</div>
-				)}
-
-				{!reducedMotion && (
-					<div ref={hintRef} className="absolute bottom-24 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-xs tracking-[0.3em] text-gray-400 portrait:hidden">
-						SCROLL TO POWER ON
 					</div>
 				)}
 			</div>
