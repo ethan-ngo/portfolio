@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, description, image, technologies, link, githubLink }: ProjectCardProps) => {
   return (
-    <div className="bg-[#1a1b26] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 relative group">
+    <div className="bg-[#15151d] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 relative group">
       <div className="relative">
         <Image src={image} alt={title} width={400} height={192} className="w-full h-48 object-cover" />
         
@@ -56,7 +56,7 @@ const ProjectCard = ({ title, description, image, technologies, link, githubLink
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 bg-[#2a2b36] text-[#00b4d8] rounded-full text-sm"
+              className="px-3 py-1 bg-[#23232d] text-[#00b4d8] rounded-full text-sm"
             >
               {tech}
             </span>

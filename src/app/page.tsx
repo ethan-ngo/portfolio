@@ -1,8 +1,8 @@
 "use client";
 
-import { FaLinkedin, FaGithub, FaFileAlt } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProjectCard from '@/components/ProjectCard';
+import HeroBoot from '@/components/HeroBoot';
 import Image from "next/image";
 
 const projects = [
@@ -204,19 +204,11 @@ const experiences: Array<{
 
 ];
 
-const typingStrings = ["Ethan Ngo.", "a Software Engineer."];
-
 export default function Home() {
 	// No conditional rendering for sections; all are always rendered
-	const [displayText, setDisplayText] = useState("");
-	const [typingIndex, setTypingIndex] = useState(0);
-	const [charIndex, setCharIndex] = useState(0);
-	const [isDeleting, setIsDeleting] = useState(false);
 	const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [showDropdown, setShowDropdown] = useState(false);
-	const typingDelay = 100;
-	const pauseDelay = 1600;
 
 	// Get all unique technologies from projects
 	const allTechnologies = Array.from(
@@ -263,83 +255,10 @@ export default function Home() {
 		}
 	};
 
-	// Typing animation effect
-	useEffect(() => {
-		let timeout: NodeJS.Timeout;
-		const currentString = typingStrings[typingIndex];
-		if (!isDeleting && charIndex < currentString.length) {
-			setDisplayText(currentString.slice(0, charIndex + 1));
-			timeout = setTimeout(() => setCharIndex(charIndex + 1), typingDelay);
-		} else if (isDeleting && charIndex > 0) {
-			setDisplayText(currentString.slice(0, charIndex - 1));
-			timeout = setTimeout(() => setCharIndex(charIndex - 1), typingDelay / 2);
-		} else {
-			timeout = setTimeout(() => {
-				if (!isDeleting) {
-					setIsDeleting(true);
-				} else {
-					setIsDeleting(false);
-					setTypingIndex((typingIndex + 1) % typingStrings.length);
-				}
-			}, pauseDelay);
-		}
-		return () => clearTimeout(timeout);
-	}, [charIndex, isDeleting, typingIndex]);
-
-	// Remove hashchange logic; all sections are always visible
-
 	return (
-		<div className="min-h-screen bg-[#13141f] text-white md:pl-[calc(var(--sidebar-open,1)*80px)]">
+		<div className="min-h-screen bg-[#0b0b10] text-white md:pl-[calc(var(--sidebar-open,1)*80px)]">
+			<HeroBoot />
 			<main className="container mx-auto px-4">
-				{/* Introduction */}
-				<section id="home" className="min-h-screen flex flex-col justify-center">
-					<div className="grid grid-cols-1 md:grid-cols-12 items-center gap-8 w-full max-w-5xl mx-auto">
-						<div className="flex flex-col items-start justify-center text-left mx-auto md:col-span-7 w-full">
-							<h1 className="text-5xl font-bold mb-4">
-								Nice to meet you!
-								<br />
-								I&apos;m <span className="text-[#00b4d8]">{displayText}</span>
-								<span className="border-r-2 border-[#00b4d8] ml-1 animate-pulse">&nbsp;</span>
-							</h1>
-							<p className="text-xl text-gray-300 mb-6">
-								I recently graduated from Cal Poly Pomona with a B.S. in Computer Science and a minor in Data Science. I build full-stack and AI-powered software.
-							</p>
-							<div className="flex gap-4 mt-4">
-								<a
-									href="https://linkedin.com/in/ethan48"
-									target="_blank"
-									rel="noreferrer"
-									className="text-[#00b4d8] hover:text-white transition-colors"
-								>
-									<FaLinkedin size={32} />
-								</a>
-								<a
-									href="https://github.com/ethan-ngo"
-									target="_blank"
-									rel="noreferrer"
-									className="text-[#00b4d8] hover:text-white transition-colors"
-								>
-									<FaGithub size={32} />
-								</a>
-								<a
-									href="/Ethan_Ngo_Resume.pdf"
-									target="_blank"
-									rel="noreferrer"
-									className="text-[#00b4d8] hover:text-white transition-colors"
-									title="View Resume"
-								>
-									<FaFileAlt size={32} />
-								</a>
-							</div>
-						</div>
-						<div className="flex justify-center md:col-span-5 w-full">
-											<div className="w-72 h-72 rounded-full bg-gray-800 ring-8 ring-gray-700 overflow-hidden flex items-center justify-center">
-												<Image src="/images/profile.jpg" alt="profile" width={288} height={288} className="w-full h-full object-cover" priority />
-											</div>
-						</div>
-					</div>
-				</section>
-
 				{/* Projects */}
 				<section id="projects" className="py-20 min-h-screen flex items-center">
 					<div className="w-full px-4">
@@ -360,7 +279,7 @@ export default function Home() {
 										}}
 										onKeyPress={handleKeyPress}
 										onFocus={() => setShowDropdown(searchTerm.length > 0)}
-										className="w-full px-4 py-3 bg-[#2a2b36] text-white rounded-lg border border-[#393b48] focus:border-[#00b4d8] focus:outline-none transition-colors"
+										className="w-full px-4 py-3 bg-[#23232d] text-white rounded-lg border border-[#33333f] focus:border-[#00b4d8] focus:outline-none transition-colors"
 									/>
 									{searchTerm && (
 										<button
@@ -377,14 +296,14 @@ export default function Home() {
 
 								{/* Dropdown */}
 								{showDropdown && filteredTechnologies.length > 0 && (
-									<div className="absolute top-full left-0 right-0 mt-1 bg-[#2a2b36] border border-[#393b48] rounded-lg shadow-xl z-50 max-h-48 overflow-y-auto">
+									<div className="absolute top-full left-0 right-0 mt-1 bg-[#23232d] border border-[#33333f] rounded-lg shadow-xl z-50 max-h-48 overflow-y-auto">
 										{filteredTechnologies.map((tech) => {
 											const count = projects.filter(p => p.technologies.includes(tech)).length;
 											return (
 												<button
 													key={tech}
 													onClick={() => addTechnology(tech)}
-													className="w-full px-4 py-2 text-left hover:bg-[#393b48] text-white transition-colors flex justify-between items-center"
+													className="w-full px-4 py-2 text-left hover:bg-[#33333f] text-white transition-colors flex justify-between items-center"
 												>
 													<span>{tech}</span>
 													<span className="text-gray-400 text-sm">({count})</span>
@@ -414,7 +333,7 @@ export default function Home() {
 									))}
 									<button
 										onClick={clearAllFilters}
-										className="px-3 py-2 bg-[#2a2b36] text-gray-300 rounded-full text-sm hover:bg-[#393b48] hover:text-white transition-colors"
+										className="px-3 py-2 bg-[#23232d] text-gray-300 rounded-full text-sm hover:bg-[#33333f] hover:text-white transition-colors"
 									>
 										Clear All
 									</button>
@@ -462,7 +381,7 @@ export default function Home() {
 						<h2 className="text-4xl font-bold mb-12 text-center">Experience</h2>
 						<div className="overflow-x-auto flex justify-center">
 							<div className="w-full max-w-5xl">
-								<table className="w-full bg-[#232532] rounded-xl overflow-hidden shadow-lg">
+								<table className="w-full bg-[#1b1b24] rounded-xl overflow-hidden shadow-lg">
 									<thead>
 										<tr className="text-left text-lg text-white">
 											<th className="px-8 py-6 font-bold w-2/5">COMPANY</th>
@@ -474,13 +393,13 @@ export default function Home() {
 														{experiences.map((e, index) => (
 											<tr 
 												key={e.company + e.position} 
-												className="border-t border-[#31323d] hover:-translate-y-2 hover:bg-[#2a2b36] hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group animate-fadeIn"
+												className="border-t border-[#26262f] hover:-translate-y-2 hover:bg-[#23232d] hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group animate-fadeIn"
 												style={{
 													animationDelay: `${index * 200}ms`
 												}}
 											>
 												<td className="flex items-center gap-4 px-8 py-6">
-																			<Image src={e.logo} alt={typeof e.company === 'string' ? e.company : 'company logo'} width={48} height={48} className="w-12 h-12 rounded-full object-cover bg-[#181926] border-2 border-[#232532] group-hover:border-[#00b4d8] transition-colors duration-300" />
+																			<Image src={e.logo} alt={typeof e.company === 'string' ? e.company : 'company logo'} width={48} height={48} className="w-12 h-12 rounded-full object-cover bg-[#101016] border-2 border-[#1b1b24] group-hover:border-[#00b4d8] transition-colors duration-300" />
 													<div>
 														<div className="font-bold text-white text-lg group-hover:text-[#00b4d8] transition-colors duration-300">{e.company}</div>
 														<div className="text-gray-400 text-sm">{e.location}</div>
@@ -490,7 +409,7 @@ export default function Home() {
 													<div className="font-semibold text-white text-lg group-hover:text-[#00b4d8] transition-colors duration-300">{e.position}</div>
 													<div className="flex flex-wrap gap-2 mt-2">
 														{e.tags.map((tag) => (
-															<span key={tag} className="px-3 py-1 bg-[#393b48] text-gray-200 rounded-full text-sm">
+															<span key={tag} className="px-3 py-1 bg-[#33333f] text-gray-200 rounded-full text-sm">
 																{tag}
 															</span>
 														))}
